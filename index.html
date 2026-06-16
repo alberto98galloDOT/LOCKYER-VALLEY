@@ -657,3 +657,90 @@
                     break;
                 default:
                     return {
+						radius: 0,
+                        fillOpacity: 0,
+                        opacity: 0,
+                        interactive: false,
+                    }
+            }
+        }
+        map.createPane('pane_BuildingComparison30mvs5mHAND_5');
+        map.getPane('pane_BuildingComparison30mvs5mHAND_5').style.zIndex = 405;
+        map.getPane('pane_BuildingComparison30mvs5mHAND_5').style['mix-blend-mode'] = 'normal';
+        var layer_BuildingComparison30mvs5mHAND_5 = new L.geoJson(json_BuildingComparison30mvs5mHAND_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_BuildingComparison30mvs5mHAND_5',
+            layerName: 'layer_BuildingComparison30mvs5mHAND_5',
+            pane: 'pane_BuildingComparison30mvs5mHAND_5',
+            onEachFeature: pop_BuildingComparison30mvs5mHAND_5,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_BuildingComparison30mvs5mHAND_5_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_BuildingComparison30mvs5mHAND_5);
+        map.addLayer(layer_BuildingComparison30mvs5mHAND_5);
+        var overlaysTree = [
+            {label: 'Building Comparison (30m vs 5m HAND)<br /><table><tr><td style="text-align: center;"><img src="legend/BuildingComparison30mvs5mHAND_5_UPGRADED0.png" /></td><td>UPGRADED</td></tr><tr><td style="text-align: center;"><img src="legend/BuildingComparison30mvs5mHAND_5_UNCHANGED1.png" /></td><td>UNCHANGED</td></tr><tr><td style="text-align: center;"><img src="legend/BuildingComparison30mvs5mHAND_5_DOWNGRADED2.png" /></td><td>DOWNGRADED</td></tr></table>', layer: layer_BuildingComparison30mvs5mHAND_5},
+            {label: 'Buildings at Risk — HAND Classification<br /><table><tr><td style="text-align: center;"><img src="legend/BuildingsatRiskHANDClassification_4_High0.png" /></td><td>High </td></tr><tr><td style="text-align: center;"><img src="legend/BuildingsatRiskHANDClassification_4_MediumHigh510m1.png" /></td><td>Medium-High (5-10m)</td></tr><tr><td style="text-align: center;"><img src="legend/BuildingsatRiskHANDClassification_4_MediumLow1015m2.png" /></td><td>Medium-Low (10-15m)</td></tr><tr><td style="text-align: center;"><img src="legend/BuildingsatRiskHANDClassification_4_Low15m3.png" /></td><td>Low (>15m)</td></tr></table>', layer: layer_BuildingsatRiskHANDClassification_4},
+            {label: ' Waterways<br /><table><tr><td style="text-align: center;"><img src="legend/Waterways_3_canal0.png" /></td><td>canal</td></tr><tr><td style="text-align: center;"><img src="legend/Waterways_3_drain1.png" /></td><td>drain</td></tr><tr><td style="text-align: center;"><img src="legend/Waterways_3_river2.png" /></td><td>river</td></tr><tr><td style="text-align: center;"><img src="legend/Waterways_3_stream3.png" /></td><td>stream</td></tr></table>', layer: layer_Waterways_3},
+            {label: '<img src="legend/IQQLDFloodplainAssessmentOverlay_2.png" />  IQ QLD Floodplain Assessment Overlay', layer: layer_IQQLDFloodplainAssessmentOverlay_2},
+            {label: ' Flood Risk Index (HAND 5m)<br /><table><tr><td style="text-align: center;"><img src="legend/FloodRiskIndexHAND5m_1_High05m0.png" /></td><td>High (0-5m)</td></tr><tr><td style="text-align: center;"><img src="legend/FloodRiskIndexHAND5m_1_MediumHigh510m1.png" /></td><td>Medium-High (5-10m)</td></tr><tr><td style="text-align: center;"><img src="legend/FloodRiskIndexHAND5m_1_MediumLow1015m2.png" /></td><td>Medium-Low (10-15m)</td></tr><tr><td style="text-align: center;"><img src="legend/FloodRiskIndexHAND5m_1_Low15m3.png" /></td><td>Low (>15m)</td></tr></table>', layer: layer_FloodRiskIndexHAND5m_1},
+            {label: 'Flood Risk Index (HAND 30m)<br /><table><tr><td style="text-align: center;"><img src="legend/FloodRiskIndexHAND30m_0_High05m0.png" /></td><td>High (0-5m)</td></tr><tr><td style="text-align: center;"><img src="legend/FloodRiskIndexHAND30m_0_MediumHigh510m1.png" /></td><td>Medium-High (5-10m)</td></tr><tr><td style="text-align: center;"><img src="legend/FloodRiskIndexHAND30m_0_MediumLow1015m2.png" /></td><td>Medium-Low (10-15m)</td></tr><tr><td style="text-align: center;"><img src="legend/FloodRiskIndexHAND30m_0_Low15m3.png" /></td><td>Low (>15m)</td></tr></table>', layer: layer_FloodRiskIndexHAND30m_0},]
+        var lay = L.control.layers.tree(null, overlaysTree,{
+            collapsed: false, 
+        });
+        lay.addTo(map);
+		document.addEventListener("DOMContentLoaded", function() {
+            function newLayersListHeight() {
+                var layerScrollbarElement = document.querySelector('.leaflet-control-layers-scrollbar');
+                if (layerScrollbarElement) {
+                    var layersListElement = document.querySelector('.leaflet-control-layers-list');
+                    var originalHeight = layersListElement.style.height 
+                        || window.getComputedStyle(layersListElement).height;
+                    var newHeight = parseFloat(originalHeight) - 50;
+                    layersListElement.style.height = newHeight + 'px';
+                }
+            }
+            var isLayersListExpanded = true;
+            var controlLayersElement = document.querySelector('.leaflet-control-layers');
+            var toggleLayerControl = document.querySelector('.leaflet-control-layers-toggle');
+            toggleLayerControl.addEventListener('click', function() {
+                if (isLayersListExpanded) {
+                    controlLayersElement.classList.remove('leaflet-control-layers-expanded');
+                } else {
+                    controlLayersElement.classList.add('leaflet-control-layers-expanded');
+                }
+                isLayersListExpanded = !isLayersListExpanded;
+                newLayersListHeight()
+            });	
+			if (controlLayersElement) {
+				controlLayersElement.addEventListener('click', function(event) {
+					var toggleLayerHeaderPointer = event.target.closest('.leaflet-layerstree-header-pointer span');
+					if (toggleLayerHeaderPointer) {
+						newLayersListHeight();
+					}
+				});
+			}
+            setTimeout(function() {
+                toggleLayerControl.click();
+            }, 10);
+            setTimeout(function() {
+                toggleLayerControl.click();
+            }, 10);
+            var isSmallScreen = window.innerWidth < 650;
+            if (isSmallScreen) {
+                setTimeout(function() {
+                    controlLayersElement.classList.remove('leaflet-control-layers-expanded');
+                    isLayersListExpanded = !isLayersListExpanded;
+                }, 500);
+            }  
+        });       
+        setBounds();
+        </script>        
+    </body>
+</html>
