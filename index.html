@@ -547,7 +547,14 @@ var hash = new L.Hash(map);
                 interactive: true,
             }
                     break;
-            }
+				default:
+                return {
+                    radius: 0,
+                    fillOpacity: 0,
+                    opacity: 0,
+                    interactive: false,
+                }            
+			}
         }
         map.createPane('pane_BuildingsatRiskHANDClassification_4');
         map.getPane('pane_BuildingsatRiskHANDClassification_4').style.zIndex = 404;
