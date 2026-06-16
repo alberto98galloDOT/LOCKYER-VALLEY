@@ -649,13 +649,13 @@ var hash = new L.Hash(map);
                 interactive: true,
             }
                     break;
-				default:
-    return {
-        radius: 0,
-        fillOpacity: 0,
-        opacity: 0,
-        interactive: false,}
-            }
+            default:
+                return {
+                    radius: 0,
+                    fillOpacity: 0,
+                    opacity: 0,
+                    interactive: false,
+                }
         }
         map.createPane('pane_BuildingComparison30mvs5mHAND_5');
         map.getPane('pane_BuildingComparison30mvs5mHAND_5').style.zIndex = 405;
