@@ -46,11 +46,11 @@
             zoomControl:false, maxZoom:28, minZoom:1
         }).fitBounds([[-27.817901922179097,151.89891098350438],[-27.350595798627417,152.51500737679493]]);
         L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: 'abcd',
-    maxZoom: 19
-}).addTo(map);
-var hash = new L.Hash(map);
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 19
+        }).addTo(map);
+        var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/qgis2web/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         // remove popup's row if "visible-with-data"
@@ -99,7 +99,6 @@ var hash = new L.Hash(map);
                     video.style.maxWidth = "60vw";
                     imgTd.parentNode.replaceChild(video, imgTd);
                     popup._contentNode.classList.add('media');
-                    // Aggiorna il popup quando il video carica i metadati
                     video.addEventListener('loadedmetadata', function() {
                         popup.update();
                     });
@@ -470,8 +469,8 @@ var hash = new L.Hash(map);
                         <td colspan="2">' + (feature.properties['SAMPLE_1'] !== null ? autolinker.link(String(feature.properties['SAMPLE_1']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">HAND_CLASS 30m</th>\
-                        <td class="visible-with-data" id="HAND_CLASS 30m">' + (feature.properties['HAND_CLASS 30m'] !== null ? autolinker.link(String(feature.properties['HAND_CLASS 30m']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <th scope="row">HAND_CLASS</th>\
+                        <td class="visible-with-data" id="HAND_CLASS">' + (feature.properties['HAND_CLASS'] !== null ? autolinker.link(String(feature.properties['HAND_CLASS']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -481,7 +480,7 @@ var hash = new L.Hash(map);
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_BuildingsatRisk 'HAND_CLASS 30m'feature) {
+        function style_BuildingsatRiskHANDClassification_4_0(feature) {
             switch(String(feature.properties['HAND_CLASS'])) {
                 case 'High (0-5m)':
                     return {
@@ -547,13 +546,14 @@ var hash = new L.Hash(map);
                 interactive: true,
             }
                     break;
-				default:
-                return {
-                    radius: 0,
-                    fillOpacity: 0,
-                    opacity: 0,
-                    interactive: false,
-                }            }
+                default:
+                    return {
+                        radius: 0,
+                        fillOpacity: 0,
+                        opacity: 0,
+                        interactive: false,
+                    }
+            }
         }
         map.createPane('pane_BuildingsatRiskHANDClassification_4');
         map.getPane('pane_BuildingsatRiskHANDClassification_4').style.zIndex = 404;
@@ -654,14 +654,14 @@ var hash = new L.Hash(map);
                 fillColor: 'rgba(196,230,135,1.0)',
                 interactive: true,
             }
-break;
-            default:
-                return {
-                    radius: 0,
-                    fillOpacity: 0,
-                    opacity: 0,
-                    interactive: false,
-                }
+                    break;
+                default:
+                    return {
+                        radius: 0,
+                        fillOpacity: 0,
+                        opacity: 0,
+                        interactive: false,
+                    }
             }
         }
         map.createPane('pane_BuildingComparison30mvs5mHAND_5');
@@ -692,17 +692,10 @@ break;
             {label: ' Flood Risk Index (HAND 5m)<br /><table><tr><td style="text-align: center;"><img src="legend/FloodRiskIndexHAND5m_1_High05m0.png" /></td><td>High (0-5m)</td></tr><tr><td style="text-align: center;"><img src="legend/FloodRiskIndexHAND5m_1_MediumHigh510m1.png" /></td><td>Medium-High (5-10m)</td></tr><tr><td style="text-align: center;"><img src="legend/FloodRiskIndexHAND5m_1_MediumLow1015m2.png" /></td><td>Medium-Low (10-15m)</td></tr><tr><td style="text-align: center;"><img src="legend/FloodRiskIndexHAND5m_1_Low15m3.png" /></td><td>Low (>15m)</td></tr></table>', layer: layer_FloodRiskIndexHAND5m_1},
             {label: 'Flood Risk Index (HAND 30m)<br /><table><tr><td style="text-align: center;"><img src="legend/FloodRiskIndexHAND30m_0_High05m0.png" /></td><td>High (0-5m)</td></tr><tr><td style="text-align: center;"><img src="legend/FloodRiskIndexHAND30m_0_MediumHigh510m1.png" /></td><td>Medium-High (5-10m)</td></tr><tr><td style="text-align: center;"><img src="legend/FloodRiskIndexHAND30m_0_MediumLow1015m2.png" /></td><td>Medium-Low (10-15m)</td></tr><tr><td style="text-align: center;"><img src="legend/FloodRiskIndexHAND30m_0_Low15m3.png" /></td><td>Low (>15m)</td></tr></table>', layer: layer_FloodRiskIndexHAND30m_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
-            //namedToggle: true,
-            //selectorBack: false,
-            //closedSymbol: '&#8862; &#x1f5c0;',
-            //openedSymbol: '&#8863; &#x1f5c1;',
-            //collapseAll: 'Collapse all',
-            //expandAll: 'Expand all',
             collapsed: false, 
         });
         lay.addTo(map);
 		document.addEventListener("DOMContentLoaded", function() {
-            // set new Layers List height which considers toggle icon
             function newLayersListHeight() {
                 var layerScrollbarElement = document.querySelector('.leaflet-control-layers-scrollbar');
                 if (layerScrollbarElement) {
@@ -716,7 +709,6 @@ break;
             var isLayersListExpanded = true;
             var controlLayersElement = document.querySelector('.leaflet-control-layers');
             var toggleLayerControl = document.querySelector('.leaflet-control-layers-toggle');
-            // toggle Collapsed/Expanded and apply new Layers List height
             toggleLayerControl.addEventListener('click', function() {
                 if (isLayersListExpanded) {
                     controlLayersElement.classList.remove('leaflet-control-layers-expanded');
@@ -726,7 +718,6 @@ break;
                 isLayersListExpanded = !isLayersListExpanded;
                 newLayersListHeight()
             });	
-			// apply new Layers List height if toggle layerstree
 			if (controlLayersElement) {
 				controlLayersElement.addEventListener('click', function(event) {
 					var toggleLayerHeaderPointer = event.target.closest('.leaflet-layerstree-header-pointer span');
@@ -735,14 +726,12 @@ break;
 					}
 				});
 			}
-            // Collapsed/Expanded at Start to apply new height
             setTimeout(function() {
                 toggleLayerControl.click();
             }, 10);
             setTimeout(function() {
                 toggleLayerControl.click();
             }, 10);
-            // Collapsed touch/small screen
             var isSmallScreen = window.innerWidth < 650;
             if (isSmallScreen) {
                 setTimeout(function() {
