@@ -50,6 +50,11 @@
     subdomains: 'abcd',
     maxZoom: 19
 }).addTo(map);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 19
+}).addTo(map);
 var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/qgis2web/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -669,6 +674,13 @@ var hash = new L.Hash(map);
                 interactive: true,
             }
                     break;
+default:
+    return {
+        radius: 0,
+        fillOpacity: 0,
+        opacity: 0,
+        interactive: false,
+    }
             }
         }
         map.createPane('pane_BuildingComparison30mvs5mHAND_5');
